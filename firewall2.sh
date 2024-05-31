@@ -33,7 +33,6 @@ iptables -t nat -A POSTROUTING -s 192.168.23.0/24 -o enp0s3 -j MASQUERADE
 
 # Proporcionar la IP de debian1 a todo el tráfico hacia la extranet
 iptables -t nat -A POSTROUTING -o enp0s8 -j SNAT --to 192.168.56.2
-iptables -t nat -A PREROUTING -i enp0s8 -j DNAT --to 192.168.56.2
 
 # Redirección de peticiones al servidor web en debian2 y al servidor ssh en debian5
 iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to 192.168.21.2:80
